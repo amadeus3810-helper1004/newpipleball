@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="만평 피클볼 코트 예약 플랫폼">
+
+<title>피클볼 코트예약 | 만평 피클볼</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, "Malgun Gothic", "Noto Sans KR", sans-serif;
+    background: #f8fbf2;
+    color: #173d32;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.container {
+    width: min(1400px, 92%);
+    margin: auto;
+}
+
+/* HEADER */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(248,251,242,.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #dce7d7;
+}
+
+.nav {
+    min-height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.logo small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #779187;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.menu a:hover {
+    color: #78a94e;
+}
+
+.menu .cta {
+    background: #173d32;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 50px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 780px;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    color: white;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(10,40,30,.85),
+        rgba(10,40,30,.25)
+    ),
+    url("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=2000&q=85")
+    center / cover no-repeat;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 0 80px;
+}
+
+.kicker {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #d8f29e;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 145px);
+    line-height: .85;
+    letter-spacing: -7px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #d8f29e;
+}
+
+.hero p {
+    max-width: 600px;
+    margin-top: 35px;
+    font-size: 18px;
+    color: #f4f8ef;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 50px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: #d8f29e;
+    color: #173d32;
+}
+
+.btn-outline {
+    border: 1px solid white;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+/* INTRO */
+
+.intro {
+    padding: 100px 0;
+    background: #f1f8df;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.intro h2 {
+    font-size: clamp(45px, 6vw, 85px);
+    line-height: .95;
+    letter-spacing: -4px;
+}
+
+.intro h2 span {
+    color: #78a94e;
+}
+
+.intro p {
+    font-size: 18px;
+    color: #52655d;
+}
+
+/* INTRO IMAGE */
+
+.intro-photo {
+    margin-top: 55px;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.intro-photo img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BOOKING GUIDE */
+
+.booking {
+    padding: 120px 0;
+    background: white;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 55px;
+}
+
+.section-title {
+    font-size: clamp(48px, 7vw, 90px);
+    line-height: .9;
+    letter-spacing: -5px;
+}
+
+.section-description {
+    max-width: 400px;
+    color: #718078;
+}
+
+.step-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.step {
+    border-top: 1px solid #dce5da;
+    padding-top: 25px;
+}
+
+.step img {
+    height: 230px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.step-number {
+    color: #78a94e;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.step h3 {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.step p {
+    color: #718078;
+}
+
+/* ACTION */
+
+.action {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    min-height: 650px;
+    background: #173d32;
+}
+
+.action-photo {
+    min-height: 650px;
+    overflow: hidden;
+}
+
+.action-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.action-content {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.action-content h2 {
+    font-size: clamp(50px, 7vw, 90px);
+    line-height: .9;
+    letter-spacing: -5px;
+    margin-bottom: 30px;
+}
+
+.action-content p {
+    color: #c9d8d1;
+    max-width: 470px;
+    margin-bottom: 30px;
+    font-size: 17px;
+}
+
+/* EQUIPMENT */
+
+.equipment {
+    padding: 100px 0;
+    background: #f1f8df;
+}
+
+.equipment h2 {
+    font-size: clamp(40px,6vw,75px);
+    margin-bottom: 20px;
+    letter-spacing: -3px;
+}
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    margin-top: 45px;
+}
+
+.equipment-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.equipment-card img {
+    height: 240px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.equipment-card h3 {
+    margin-top: 18px;
+    font-size: 22px;
+}
+
+.equipment-card p {
+    color: #718078;
+    font-size: 14px;
+}
+
+/* NOTICE */
+
+.notice {
+    padding: 110px 0;
+    background: white;
+}
+
+.notice h2 {
+    font-size: clamp(45px,6vw,75px);
+    line-height: .95;
+    margin-bottom: 25px;
+}
+
+.notice-intro {
+    max-width: 750px;
+    color: #53645c;
+}
+
+.notice-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.notice-item {
+    padding: 25px;
+    background: #f1f8df;
+    border: 1px solid #d5e2c8;
+}
+
+.notice-item strong {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.notice-item span {
+    font-size: 14px;
+    color: #718078;
+}
+
+/* FINAL */
+
+.final {
+    padding: 110px 20px;
+    text-align: center;
+    background: #eaf4d8;
+}
+
+.final h2 {
+    font-size: clamp(50px,8vw,105px);
+    line-height: .9;
+    letter-spacing: -5px;
+}
+
+.final h2 span {
+    color: #78a94e;
+}
+
+.final p {
+    margin: 30px auto;
+    color: #718078;
+}
+
+.final-btn {
+    display: inline-block;
+    background: #173d32;
+    color: white;
+    padding: 17px 32px;
+    border-radius: 50px;
+    font-weight: 900;
+}
+
+/* FOOTER */
+
+.footer {
+    background: #173d32;
+    color: white;
+    padding: 70px 0 30px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer h2 {
+    font-size: 55px;
+    line-height: .9;
+}
+
+.footer p {
+    color: #b8c9c2;
+    max-width: 430px;
+}
+
+.footer-bottom {
+    margin-top: 70px;
+    padding-top: 20px;
+    border-top: 1px solid #42665a;
+    display: flex;
+    justify-content: space-between;
+    color: #9eb2aa;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a:not(.cta) {
+        display: none;
+    }
+
+    .intro-grid,
+    .action {
+        grid-template-columns: 1fr;
+    }
+
+    .step-grid,
+    .equipment-grid,
+    .notice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-photo {
+        min-height: 450px;
+    }
+
+    .action-content {
+        padding: 60px 8%;
+    }
+
+    .footer-top {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:600px) {
+    .nav {
+        min-height: 70px;
+    }
+
+    .hero {
+        min-height: 700px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .intro,
+    .booking,
+    .equipment,
+    .notice,
+    .final {
+        padding: 75px 0;
+    }
+
+    .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .step img {
+        height: 210px;
+    }
+
+    .action-photo {
+        min-height: 350px;
+    }
+
+    .action-content {
+        padding: 50px 7%;
+    }
+
+    .equipment-card img {
+        height: 220px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+
+        <a href="index.html" class="logo">
+            MANPYEONG
+            <small>PICKLEBALL PLATFORM</small>
+        </a>
+
+        <nav class="menu">
+            <a href="index.html">HOME</a>
+            <a href="courts.html">COURTS</a>
+            <a href="booking.html">BOOKING</a>
+            <a href="community.html">COMMUNITY</a>
+            <a href="tournament.html">TOURNAMENT</a>
+            <a href="notice.html">NOTICE</a>
+            <a href="courts.html" class="cta">예약하기</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-content">
+
+        <div class="kicker">
+            MANPYEONG PICKLEBALL · 2026
+        </div>
+
+        <h1>
+            BOOK<br>
+            YOUR<br>
+            <span>GAME.</span>
+        </h1>
+
+        <p>
+            피클볼을 즐길 준비가 되셨나요?
+            가까운 피클볼 코트를 찾아보고
+            원하는 날짜와 시간을 선택하세요.
+            만평 피클볼이 편리한 스포츠 생활을 연결합니다.
+        </p>
+
+        <div class="buttons">
+            <a href="courts.html" class="btn btn-primary">
+                피클볼 코트 찾기 →
+            </a>
+
+            <a href="#guide" class="btn btn-outline">
+                예약방법 보기
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+    <div class="container">
+
+        <div class="intro-grid">
+
+            <div>
+                <div class="kicker">PICKLEBALL LIFE</div>
+
+                <h2>
+                    피클볼의<br>
+                    <span>즐거움.</span>
+                </h2>
+            </div>
+
+            <p>
+                피클볼은 패들과 구멍이 뚫린 공을 사용하여
+                네트를 사이에 두고 즐기는 스포츠입니다.
+
+                남녀노소 누구나 쉽게 시작할 수 있으며
+                친구, 가족, 동호인들과 함께
+                즐거운 시간을 보낼 수 있습니다.
+            </p>
+
+        </div>
+
+        <div class="intro-photo">
+            <img
+                src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1400&q=85"
+                alt="피클볼 코트와 네트"
+                loading="lazy">
+        </div>
+
+    </div>
+</section>
+
+<!-- BOOKING GUIDE -->
+<section class="booking" id="guide">
+    <div class="container">
+
+        <div class="section-head">
+
+            <div>
+                <div class="kicker">BOOKING GUIDE</div>
+
+                <h2 class="section-title">
+                    EASY<br>
+                    BOOKING.
+                </h2>
+            </div>
+
+            <p class="section-description">
+                복잡한 예약 절차 없이
+                세 단계로 피클볼 코트를
+                간편하게 예약할 수 있습니다.
+            </p>
+
+        </div>
+
+        <div class="step-grid">
+
+            <div class="step">
+                <img
+                    src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=900&q=80"
+                    alt="피클볼 코트 찾기"
+                    loading="lazy">
+
+                <div class="step-number">01 · SEARCH</div>
+                <h3>코트 찾기</h3>
+                <p>
+                    COURTS 페이지에서
+                    원하는 지역의 피클볼 코트를 검색합니다.
+                </p>
+            </div>
+
+            <div class="step">
+                <img
+                    src="https://get2eleven.com/cdn/shop/articles/best_pickleball_shoes_for_men.png?v=1782965753"
+                    alt="피클볼 경기 장면"
+                    loading="lazy">
+
+                <div class="step-number">02 · SELECT</div>
+                <h3>시간 선택</h3>
+                <p>
+                    원하는 날짜와 이용 가능한
+                    시간을 선택합니다.
+                </p>
+            </div>
+
+            <div class="step">
+                <img
+                    src="https://images.unsplash.com/photo-1612534847738-b3af9bc31f0c?auto=format&fit=crop&w=900&q=80"
+                    alt="스포츠 패들과 공"
+                    loading="lazy">
+
+                <div class="step-number">03 · COMPLETE</div>
+                <h3>예약 완료</h3>
+                <p>
+                    예약자 정보를 입력하고
+                    예약 신청을 완료합니다.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ACTION -->
+<section class="action">
+
+    <div class="action-photo">
+        <img
+            src="https://get2eleven.com/cdn/shop/articles/best_pickleball_shoes_for_men.png?v=1782965753"
+            alt="피클볼 경기와 선수"
+            loading="lazy">
+    </div>
+
+    <div class="action-content">
+
+        <div class="kicker">PLAY IN MOTION</div>
+
+        <h2>
+            MOVE.<br>
+            HIT.<br>
+            PLAY.
+        </h2>
+
+        <p>
+            피클볼은 빠른 반응과
+            짧은 랠리에서 오는
+            짜릿한 재미가 있는 스포츠입니다.
+
+            패들과 공을 준비하고
+            가까운 피클볼 코트에서
+            직접 경험해보세요.
+        </p>
+
+        <a href="courts.html" class="btn btn-primary">
+            코트 예약하기 →
+        </a>
+
+    </div>
+
+</section>
+
+<!-- EQUIPMENT -->
+<section class="equipment">
+    <div class="container">
+
+        <div class="kicker">PICKLEBALL EQUIPMENT</div>
+
+        <h2>피클볼을 위한 준비</h2>
+
+        <p>
+            피클볼을 즐기기 위해 필요한
+            패들, 공, 코트를 확인해보세요.
+        </p>
+
+        <div class="equipment-grid">
+
+            <div class="equipment-card">
+                <img
+                    src="https://images.unsplash.com/photo-1612534847738-b3af9bc31f0c?auto=format&fit=crop&w=900&q=85"
+                    alt="스포츠 라켓과 장비"
+                    loading="lazy">
+
+                <h3>피클볼 패들</h3>
+                <p>경기 스타일에 맞는 패들을 준비하세요.</p>
+            </div>
+
+            <div class="equipment-card">
+                <img
+                    src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=85"
+                    alt="스포츠 공"
+                    loading="lazy">
+
+                <h3>피클볼 공</h3>
+                <p>실내외 환경에 맞는 공을 선택하세요.</p>
+            </div>
+
+            <div class="equipment-card">
+                <img
+                    src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=900&q=85"
+                    alt="피클볼 경기 코트"
+                    loading="lazy">
+
+                <h3>피클볼 코트</h3>
+                <p>가까운 코트를 찾아 경기를 시작하세요.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- NOTICE -->
+<section class="notice">
+    <div class="container">
+
+        <div class="kicker">IMPORTANT</div>
+
+        <h2>
+            예약 전<br>
+            확인하세요.
+        </h2>
+
+        <p class="notice-intro">
+            코트 이용시간과 시설 이용규정을
+            확인한 후 예약해주세요.
+            예약정보를 정확하게 입력해야
+            원활한 이용이 가능합니다.
+        </p>
+
+        <div class="notice-grid">
+
+            <div class="notice-item">
+                <strong>이용시간 확인</strong>
+                <span>
+                    예약 전 이용 가능 시간과
+                    코트 운영시간을 확인하세요.
+                </span>
+            </div>
+
+            <div class="notice-item">
+                <strong>예약정보 확인</strong>
+                <span>
+                    예약자 이름과 연락처를
+                    정확하게 입력하세요.
+                </span>
+            </div>
+
+            <div class="notice-item">
+                <strong>이용규정 확인</strong>
+                <span>
+                    시설별 이용규정과
+                    준비물을 확인해주세요.
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+    <div class="container">
+
+        <div class="kicker">YOUR NEXT GAME</div>
+
+        <h2>
+            READY TO<br>
+            <span>PLAY?</span>
+        </h2>
+
+        <p>
+            오늘 바로 가까운 피클볼 코트를 찾아보세요.
+        </p>
+
+        <a href="courts.html" class="final-btn">
+            코트 찾고 예약하기 →
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer-top">
+
+            <div>
+                <div class="kicker">MANPYEONG PICKLEBALL</div>
+
+                <h2>
+                    PLAY.<br>
+                    MEET.<br>
+                    MOVE.
+                </h2>
+            </div>
+
+            <p>
+                피클볼을 어디서 할지 고민하지 않도록.
+
+                코트, 예약, 모임, 대회를
+                하나의 경험으로 연결합니다.
+            </p>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 MANPYEONG PICKLEBALL</span>
+            <span>Privacy · Terms</span>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
